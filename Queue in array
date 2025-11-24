@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Queue{
+    public:
+    int size;
+    int front;
+    int rear;
+    int *arr;
+    Queue(int size){
+        this->size=size;
+        front=0;
+        rear=-1;
+        arr=new int[size];
+    }
+    void enqueue(int n){
+        if(rear==size-1){
+            cout<<"Stack overflow: "<<endl;
+        }
+        else{
+            rear++;
+            arr[rear]=n;
+        }
+    }
+    void dequeue(){
+        if(front>rear){
+            cout<<"Stack underflow: "<<endl;
+        }
+        else{
+            front++;
+        }
+    }
+    int peek(){
+        if(front>rear){
+            cout<<"Stack is empthy: "<<endl;
+            return -1;
+        }
+        else{
+            return arr[front];
+        }
+    }
+    void display(){
+        if(front==-1){
+            cout<<"Queue is empthy: "<<endl;
+        }
+        else{
+            for(int i=front; i<=rear; i++){
+                cout<<arr[i]<<" ";
+            }cout<<endl;
+        }
+    }
+};
+int main(){
+    Queue q(5);
+    q.enqueue(1);
+    q.enqueue(2);
+    q.enqueue(3);
+    q.enqueue(4);
+    q.enqueue(5);
+    q.display();
+    cout<<"Peek element is: "<<q.peek()<<endl;
+    q.dequeue();
+    cout<<"Peek element is: "<<q.peek()<<endl;
+    q.dequeue();
+    cout<<"Peek element is: "<<q.peek()<<endl;
+    q.dequeue();
+    cout<<"Peek element is: "<<q.peek()<<endl;
+    q.dequeue();
+    cout<<"Peek element is: "<<q.peek()<<endl;
+    q.dequeue();
+    // cout<<"Peek element is: "<<q.peek()<<endl;
+}
