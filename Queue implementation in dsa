@@ -1,0 +1,81 @@
+#include <bits/stdc++.h>
+using namespace std;
+class node{
+    public:
+    int data;
+    node* next;
+    node(int d){
+        data=d;
+        next=NULL;
+    }
+};
+
+class Queue {
+public:
+    node* front;
+    node* rear;
+
+    Queue(){
+        front=NULL;
+        rear=NULL;
+    }
+    void enqueue(int x){
+        node* newnode=new node(x);
+        if(front==NULL){
+            front=rear=newnode;
+        }
+        else{
+            rear->next=newnode;
+            rear=newnode;
+        }
+    }
+    void dequeue(){
+        if(front==NULL){
+            cout<<"Queue is underflow: "<<endl;
+        }
+        else{
+            node* temp=front;
+            front=front->next;
+            delete temp;
+            if(front==NULL){
+                rear=NULL;
+            }
+        }
+    }
+    void peek(){
+        if(front==NULL){
+            cout<<"Queue is empthy: ";
+        }
+        else{
+            cout<<front->data<<" ";
+        }
+    }
+
+    
+
+  
+};
+
+int main(){
+    Queue q;
+
+    q.enqueue(1);
+    q.enqueue(2);
+    q.enqueue(3);
+    q.enqueue(4);
+    q.enqueue(5);
+
+    q.peek();
+    q.dequeue();
+    q.peek();
+    q.dequeue();
+    q.peek();
+    q.dequeue();
+    q.peek();
+    q.dequeue();
+    q.peek();
+    q.dequeue();
+    q.dequeue();
+
+    return 0;
+}
